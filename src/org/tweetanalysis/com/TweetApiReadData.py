@@ -4,7 +4,7 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy.streaming import StreamListener
 from configparser import SafeConfigParser, ConfigParser
-
+from tweetUtilites import readinifile
 
 
 class TweetsListener(object):
@@ -28,24 +28,13 @@ class TweetsListener(object):
         print("Connected Successfully!")
         return True
 
-def readiniFile(keyPass,keyReq):
-    configKey = ConfigParser()
-    configKey.read('/Laxman/Project/Python/TweetStreamingAnalysis/src/resource/configfile.ini')
-    for name, value in configKey.items(keyPass):
-        if keyReq == name:
-            return value
-    return None
+
 
 if __name__ == "__main__":
 
-    api_key = readiniFile('key_pass','api_key')
-    api_secret_key = readiniFile('key_pass','api_secrect_key')
-
-    access_token = readiniFile('key_pass','access_token')
-    access_token_secret = readiniFile('key_pass','access_token_secret')
-
-    auth = OAuthHandler(api_key, api_secret_key)
-    auth.set_access_token(access_token, access_token_secret)
+    myapi = readinifile('key_pass')
+    auth = OAuthHandler(myapi['api_key'], myapi['api_secret_key'])
+    auth.set_access_token(myapi['access_token'], myapi['access_token_secret'])
 
     twitter_stream = Stream(auth, TweetsListener())
     twitter_stream.filter(track=['#'])

@@ -18,7 +18,8 @@ if __name__ == "__main__":
 
     ssc.checkpoint("file:///Laxman/Project/Python/TweetStreamingAnalysis/src/org/tweetanalysis/data")
 
-    lines = ssc.socketTextStream(sys.argv[1], int(sys.argv[2]))
+    # lines = ssc.socketTextStream(sys.argv[1], int(sys.argv[2]))
+    lines = ssc.socketTextStream("localhost", 9009)
     # countbywindow = lines.countByWindow(10,2)
     word_counts = lines.flatMap(lambda line: line.split(" ")) \
         .map(lambda word: (word, 1)) \
