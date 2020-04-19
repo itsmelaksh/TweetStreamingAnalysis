@@ -19,3 +19,10 @@ sh bin/zookeeper-server-start.sh config/zookeeper.properties
 # start kafka
 sh bin/kafka-server-start.sh config/server.properties
 
+# Start receiving messages from Tweeter and then process it to kafka
+python main.py
+# start receiving messages using spark
+spark-submit --jars spark.jar receivemessage.py
+
+# Start api to show the graph
+python api.py
