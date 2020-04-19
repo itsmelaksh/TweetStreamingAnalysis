@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     sc = SparkContext(appName="StreamingwordCount")
     ssc = StreamingContext(sc,10)
-    sparkses = SparkSession(appName="test")
+    # sparkses = SparkSession(appName="test")
     ssc.checkpoint("file:///Laxman/Project/Python/TweetStreamingAnalysis/src/org/tweetanalysis/data")
 
     #lines = ssc.socketTextStream(sys.argv[1], int(sys.argv[2]))

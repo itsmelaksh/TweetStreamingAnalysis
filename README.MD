@@ -10,5 +10,12 @@ This project is about reading streaming data and perform analysis
     ## Then run the following command: spark-submit dataprocessing.py
     ## and, then start the api application to receive data from spark layer
     
- 
-   
+
+# Download latest or other version of kafka 
+# Extract it into folder and go to that folder to start zookeepeer and kafka server
+# start zookeeper
+sh bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# start kafka
+sh bin/kafka-server-start.sh config/server.properties
+
